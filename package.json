@@ -1,0 +1,24 @@
+{
+  "name": "reto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "passport-local": "^1.0.0",
+    "pg": "^8.9.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.29.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
