@@ -35,7 +35,13 @@ router.delete('/eliminarPaciente/:id',borrarPaciente);
 router.delete('/eliminarDoctor/:id', borrarDoctor);
 router.delete('/eliminarEmpleado/:id', borrarEmpleado);
 
+router.get('/login', (req, res) =>{
+    res.render("login")
+});
 
+router.get('/', (req, res) =>{
+    res.render("registro")
+});
 
 
 
