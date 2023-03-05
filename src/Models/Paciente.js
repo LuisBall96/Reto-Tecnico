@@ -1,6 +1,7 @@
-const {DataTypes } = require('sequelize');
+const {DataTypes, Model } = require('sequelize');
 const {sequelize} = require('../Database/db.js');
-const HistoriaClinica = require ('./HistoriaClinica.js')
+const HistoriaClinica = require ('./HistoriaClinica.js');
+const bcrypt = require ('bcrypt-nodejs');
 
 
 const Paciente = sequelize.define('paciente', {
@@ -36,6 +37,14 @@ const Paciente = sequelize.define('paciente', {
     }
 }, {
     timestamps: false,
+    hooks: {
+        beforeCreate: async (paciente) => {
+            if (paciente.contraseña){
+                const cifrar = await bcrypt.genSaltSync(10);
+                paciente.contraseña = bcrypt.hashSync(paciente.contraseña, cifrar)
+            }
+        }
+    }
 });
 
 Paciente.hasOne(HistoriaClinica,{

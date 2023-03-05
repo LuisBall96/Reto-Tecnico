@@ -1,5 +1,6 @@
 const {DataTypes } = require('sequelize');
 const {sequelize} = require('../Database/db.js');
+const bcrypt = require ('bcrypt-nodejs');
 
 
 const Empleado = sequelize.define('empleado', {
@@ -31,6 +32,14 @@ const Empleado = sequelize.define('empleado', {
     },
 }, {
     timestamps: false,
+    hooks: {
+        beforeCreate: async (empleado) => {
+            if (empleado.contraseña){
+                const cifrar = await bcrypt.genSaltSync(10);
+                empleado.contraseña = bcrypt.hashSync(empleado.contraseña, cifrar)
+            }
+        }
+    }
 });
 
 module.exports = Empleado;

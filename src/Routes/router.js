@@ -35,14 +35,23 @@ router.delete('/eliminarPaciente/:id',borrarPaciente);
 router.delete('/eliminarDoctor/:id', borrarDoctor);
 router.delete('/eliminarEmpleado/:id', borrarEmpleado);
 
-router.get('/login', (req, res) =>{
-    res.render("login")
-});
 
 router.get('/', (req, res) =>{
+    res.render("index");
+});
+
+router.get('/registro', (req, res) =>{
     res.render("registro")
 });
 
+router.post('/registro', (req, res) =>{
+    console.log(req.body);
+    res.send('recibido');
+});
+
+router.get('/login', (req, res) =>{
+    res.render("login")
+});
 
 
 
